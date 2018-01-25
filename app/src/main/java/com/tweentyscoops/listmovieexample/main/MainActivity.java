@@ -1,5 +1,6 @@
 package com.tweentyscoops.listmovieexample.main;
 
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.tweentyscoops.listmovieexample.R;
+import com.tweentyscoops.listmovieexample.detail.DetailActivity;
 import com.tweentyscoops.listmovieexample.main.adapter.MovieAdapter;
 import com.tweentyscoops.listmovieexample.model.MovieDao;
 import com.tweentyscoops.listmovieexample.model.MovieDetailDao;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements MainView, MovieAd
     private MovieAdapter movieAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private MovieDao dao;
-    private static String KEY_MODEL = "model";
+    public static String KEY_MODEL = "model";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,6 @@ public class MainActivity extends AppCompatActivity implements MainView, MovieAd
 
     @Override
     public void onNavigateToDetail(MovieDetailDao model) {
-        // TODO : intent to detail activity
+        startActivity(new Intent(this, DetailActivity.class).putExtra(KEY_MODEL, model));
     }
 }
