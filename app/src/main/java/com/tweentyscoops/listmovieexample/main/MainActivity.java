@@ -15,7 +15,7 @@ import com.tweentyscoops.listmovieexample.model.MovieDetailDao;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MainView, MovieAdapter.MovieListener {
+public class MainActivity extends AppCompatActivity implements MainView, MovieAdapter.MovieListener, SwipeRefreshLayout.OnRefreshListener {
 
     private MainController controller;
     private MovieAdapter movieAdapter;
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainView, MovieAd
         setContentView(R.layout.activity_main);
         setupInstance();
         setupView();
+        if (savedInstanceState == null) controller.requestListMovie();
     }
 
     private void setupInstance() {
@@ -43,7 +44,12 @@ public class MainActivity extends AppCompatActivity implements MainView, MovieAd
         rvMovie.setLayoutManager(new LinearLayoutManager(this));
         rvMovie.setAdapter(movieAdapter);
         rvMovie.setHasFixedSize(false);
+        swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorAccent));
+    }
+
+    @Override
+    public void onRefresh() {
         controller.requestListMovie();
     }
 
