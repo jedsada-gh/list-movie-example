@@ -31,13 +31,12 @@ public class MainActivity extends AppCompatActivity implements MainView, MovieAd
         setContentView(R.layout.activity_main);
         setupInstance();
         setupView();
-        if (savedInstanceState == null) controller.requestListMovie();
+        // FIXME : check instance is null for configuration
+        controller.requestListMovie();
     }
 
     private void setupInstance() {
-        controller = new MainController(this);
-        movieAdapter = new MovieAdapter();
-        movieAdapter.setMovieListener(this);
+        // TODO #1 : create instance object
     }
 
     private void setupView() {
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements MainView, MovieAd
 
     @Override
     public void onRefresh() {
-        controller.requestListMovie();
+        // TODO #2 : request APIs for refresh list movie
     }
 
     @Override
@@ -67,13 +66,12 @@ public class MainActivity extends AppCompatActivity implements MainView, MovieAd
 
     @Override
     public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        // TODO #3 : show error by Toast android
     }
 
     @Override
     public void setListMovie(MovieDao dao) {
-        this.dao = dao;
-        movieAdapter.setItems(this.dao.getMovies());
+        // TODO #4 : set items to list movie
     }
 
     @Override
@@ -91,6 +89,6 @@ public class MainActivity extends AppCompatActivity implements MainView, MovieAd
 
     @Override
     public void onNavigateToDetail(MovieDetailDao model) {
-        startActivity(new Intent(this, DetailActivity.class).putExtra(KEY_MODEL, model));
+        // TODO #5 : intent to MovieDetailActivity
     }
 }

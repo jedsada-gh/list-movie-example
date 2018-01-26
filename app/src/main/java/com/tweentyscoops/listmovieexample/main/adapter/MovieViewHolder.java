@@ -4,9 +4,6 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.tweentyscoops.listmovieexample.R;
 import com.tweentyscoops.listmovieexample.model.MovieDetailDao;
 import com.tweentyscoops.listmovieexample.widget.CustomImageView;
 
@@ -22,9 +19,7 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     MovieViewHolder(View itemView) {
         super(itemView);
-        imgMovie = itemView.findViewById(R.id.imgMovie);
-        tvNameMovie = itemView.findViewById(R.id.tvNameMovie);
-        itemView.setOnClickListener(this);
+        // TODO #8 : findViewById from view holder
     }
 
     void setListener(MovieViewHolderListener listener) {
@@ -32,17 +27,11 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
     }
 
     void onBindData(MovieDetailDao model) {
-        tvNameMovie.setText(model.getTitle());
-        Glide.with(itemView.getContext())
-                .load(model.getImageUrl())
-                .apply(new RequestOptions()
-                        .error(android.R.color.darker_gray)
-                        .placeholder(android.R.color.darker_gray))
-                .into(imgMovie);
+        // TODO #8.1 : set data to item view
     }
 
     @Override
     public void onClick(View view) {
-        if (listener != null) listener.onItemMovieClick(getAdapterPosition());
+        // TODO #8.2 : set callback for interact to class adapter
     }
 }

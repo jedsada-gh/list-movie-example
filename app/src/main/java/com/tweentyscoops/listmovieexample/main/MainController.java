@@ -23,26 +23,7 @@ class MainController {
     }
 
     void requestListMovie() {
-        if (view != null) {
-            view.showProgressBar();
-            getMovieApi().getListMovie().enqueue(new Callback<MovieDao>() {
-                @Override
-                public void onResponse(@NonNull Call<MovieDao> call, @NonNull Response<MovieDao> response) {
-                    view.hideProgressBar();
-                    if (response.isSuccessful()) {
-                        view.setListMovie(response.body());
-                    } else {
-                        view.showMessage(response.message());
-                    }
-                }
-
-                @Override
-                public void onFailure(@NonNull Call<MovieDao> call, @NonNull Throwable t) {
-                    view.hideProgressBar();
-                    view.showMessage(t.getMessage());
-                }
-            });
-        }
+        // TODO #6 : request APIs list movie
     }
 
     // FIXME : is bad code

@@ -18,10 +18,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle(getMovieDetail().getTitle());
-        }
+        // TODO #9 : understand actionbar and tools bar
         ((AppCompatTextView) findViewById(R.id.tvNameMovie)).setText(getMovieDetail().getTitle());
         ((AppCompatTextView) findViewById(R.id.tvOverviewMovie)).setText(getMovieDetail().getOverview());
         Glide.with(this).load(getMovieDetail().getImageUrl())

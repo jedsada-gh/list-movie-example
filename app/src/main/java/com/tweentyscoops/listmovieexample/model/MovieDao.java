@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
+// FIXME : example for parse JSON Response to Object to use
 public class MovieDao implements Parcelable {
 
     @SerializedName("results")

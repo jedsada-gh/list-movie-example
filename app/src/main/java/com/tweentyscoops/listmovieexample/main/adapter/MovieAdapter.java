@@ -24,8 +24,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> implemen
     }
 
     public void setItems(List<MovieDetailDao> items) {
-        this.items = items;
-        notifyDataSetChanged();
+        // TODO #7 : set new items and refresh adapter
     }
 
     @Override
